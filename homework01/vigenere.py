@@ -45,8 +45,8 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
 
     word = word.upper()
 
-    for i in range(len(plaintext)):
-        letter = plaintext[i]
+    for i in range(len(ciphertext)):
+        letter = ciphertext[i]
 
         if not letter.isalpha():
             plaintext += letter
@@ -69,6 +69,6 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
         if low:
             out = out.lower()
 
-        ciphertext += out
+        plaintext += out
 
     return plaintext

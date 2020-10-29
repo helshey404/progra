@@ -22,10 +22,8 @@ def is_prime(n: int) -> bool:
                 j = j + 1
             i = i + 1
         elif j == 1:
-            print('No')
             return False
         else:
-            print('Yes')
             return True
 
     pass
@@ -56,11 +54,11 @@ def multiplicative_inverse(e: int, phi: int) -> int:
     Euclid's extended algorithm for finding the multiplicative
     inverse of two numbers.
 
-    >>> multiplicative_inverse(7, 40)
     23
     """
     # PUT YOUR CODE HERE
-
+    a=e
+    b=phi
     while a != 0 and b != 0:
         if a >= b:
             a %= b

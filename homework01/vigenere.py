@@ -1,6 +1,6 @@
 def encrypt_vigenere(plaintext: str, keyword: str) -> str:
-
     ciphertext = ""
+
     word = keyword
     while len(word) < len(plaintext):
         word += keyword
@@ -33,12 +33,10 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
 
         ciphertext += out
 
-
     return ciphertext
 
 
 def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
-
     plaintext = ""
 
     word = keyword

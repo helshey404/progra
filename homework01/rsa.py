@@ -4,17 +4,20 @@ import typing as tp
 
 def is_prime(n: int) -> bool:
 
-    i = 2
-    j = 0
-    while True:
-        if i * i <= n and j != 1:
-            if n % i == 0:
-                j = j + 1
-            i = i + 1
-        elif j == 1:
-            return False
-        else:
-            return True
+    if n == 1 :
+        return False
+    else:
+        i = 2
+        j = 0
+        while True:
+            if i * i <= n and j != 1:
+                if n % i == 0:
+                    j = j + 1
+                i = i + 1
+            elif j == 1:
+                return False
+            else:
+                return True
 
     pass
 
@@ -32,15 +35,20 @@ def gcd(a: int, b: int) -> int:
 
 
 def multiplicative_inverse(e: int, phi: int) -> int:
-
-    a = e
-    b = phi
-    while a != 0 and b != 0:
-        if a >= b:
-            a %= b
-        else:
-            b %= a
-    return a or b
+    ar = []
+    while e != 0:
+        ar.append((e, phi))
+        e2 = e
+        e = phi % e
+        phi = e2
+    x = 0
+    y = 1
+    while len(ar) != 0:
+        e, phi = ar.pop()
+        x2 = x
+        x = (y - (phi // e) * x)
+        y = x2
+    return (x + phi) % phi
 
     pass
 

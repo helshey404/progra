@@ -193,7 +193,7 @@ def generate_sudoku(N: int) -> tp.List[tp.List[str]]:
     >>> check_solution(solution)
     True
     """
-    
+
     grid = solve([9 * ["."] for _ in range(9)])
     N = 81 - min(81, N)
 

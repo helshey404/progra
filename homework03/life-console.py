@@ -1,4 +1,6 @@
 import curses
+import sys
+
 import pygame
 import time
 
@@ -43,7 +45,7 @@ class Console(UI):
     def run(self) -> None:
         screen = curses.initscr()
         # PUT YOUR CODE HERE
-        while life.generations <= life.max_generations and life.prev_generation != life.curr_generation:
+        while life.n_generation <= life.max_generations and life.prev_generation != life.curr_generation:
             self.draw_borders(screen)
             self.draw_grid(screen)
             screen.refresh()
@@ -51,6 +53,33 @@ class Console(UI):
             time.sleep(1)
         curses.endwin()
 
-life = GameOfLife((50, 50))
+cols, rows, max_gen= 80, 25, 10
+
+if len(sys.argv) <= 1:
+    print("default")
+else:
+    for j in range(1, len(sys.argv), 2):
+        i = sys.argv[j]
+        if i == "--help":
+            print('input --rows <int> and --cols <int>\n'
+                  'imput maximum of generations --max_generations <int>\n')
+            exit(1)
+        elif i == "--rows":
+            rows = int(sys.argv[j+1])
+        elif i == "--cols":
+            cols = int(sys.argv[j+1])
+        elif i == "--max_generations":
+            max_gen = int(sys.argv[j+1])
+        else:
+            print("Error")
+            exit(1)
+
+
+life = GameOfLife((25, 80))
+
+
+life = GameOfLife((rows, cols), max_generations=max_gen)
 ui = Console(life)
 ui.run()
+
+

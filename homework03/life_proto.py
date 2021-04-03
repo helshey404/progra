@@ -12,7 +12,7 @@ Grid = List[Cells]
 
 class GameOfLife:
 
-    def __init__(self, width: int = 640, height: int = 480, cell_size: int = 10, speed: int = 10) -> None:
+    def __init__(self, width: int = 1000, height: int = 1000, cell_size: int = 10, speed: int = 10) -> None:
         self.width = width
         self.height = height
         self.cell_size = cell_size
@@ -168,5 +168,5 @@ class GameOfLife:
                     grid_copy[i][j] = 1
         return grid_copy
 
-life=GameOfLife(320,280,20)
+life=GameOfLife(720,480,10)
 life.run()

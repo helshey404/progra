@@ -16,7 +16,7 @@ class GameOfLife:
             self,
             size: Tuple[int, int],
             randomize: bool = True,
-            max_generations: Optional[float] = float('inf')
+            max_generations: Optional[float] = 20
     ) -> None:
         # Размер клеточного поля
         self.rows, self.cols = size
@@ -27,7 +27,7 @@ class GameOfLife:
         # Максимальное число поколений
         self.max_generations = max_generations
         # Текущее число поколений
-        self.generations = 1
+        self.n_generation = 1
 
     def create_grid(self, randomize: bool = False) -> Grid:
         grid = []
@@ -72,16 +72,16 @@ class GameOfLife:
         """
         self.prev_generation = deepcopy(self.curr_generation)
         self.curr_generation = self.get_next_generation()
-        self.generations = self.generations + 1
+        self.n_generation = self.n_generation + 1
 
 
 
     @property
-    def is_max_generations_exceeded(self) -> bool:
+    def is_max_generations_exceed(self) -> bool:
         """
         Не превысило ли текущее число поколений максимально допустимое.
         """
-        return self.max_generations >= self.generations
+        return self.max_generations >= self.n_generation
 
     @property
     def is_changing(self) -> bool:

@@ -75,26 +75,31 @@ class GUI(UI):
 
         pygame.quit()
 
+cols, rows, max_gen= 80, 25, 10
 
 if len(sys.argv) <= 1:
-    print("\nStarting with default settings.\nRun program with argument --help to get help （￣︶￣）.\n")
+    print("default")
 else:
     for j in range(1, len(sys.argv), 2):
         i = sys.argv[j]
         if i == "--help":
-            print('\n   To set the grid size use the arguments --rows <int> --cols <int>\n'
-                  '   To set the maximum number of generations in the game use the argument --max_generations <int>\n')
+            print('input --rows <int> and --cols <int>\n'
+                  'imput maximum of generations --max_generations <int>\n')
             exit(1)
         elif i == "--rows":
-            sys_rows = int(sys.argv[j + 1])
+            rows = int(sys.argv[j+1])
         elif i == "--cols":
-            sys_cols = int(sys.argv[j + 1])
+            cols = int(sys.argv[j+1])
         elif i == "--max_generations":
-            max_gen = int(sys.argv[j + 1])
+            max_gen = int(sys.argv[j+1])
         else:
-            print("\nНеверный ключ командной строки: ", i, "\n")
+            print("Error")
             exit(1)
 
-life = GameOfLife((50, 50))
+
+life = GameOfLife((25, 80))
+
+
+life = GameOfLife((rows, cols), max_generations=max_gen)
 ui = GUI(life)
 ui.run()

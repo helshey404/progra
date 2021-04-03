@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from pygame.locals import *
 
@@ -72,6 +74,26 @@ class GUI(UI):
             clock.tick(self.speed)
 
         pygame.quit()
+
+
+if len(sys.argv) <= 1:
+    print("\nStarting with default settings.\nRun program with argument --help to get help （￣︶￣）.\n")
+else:
+    for j in range(1, len(sys.argv), 2):
+        i = sys.argv[j]
+        if i == "--help":
+            print('\n   To set the grid size use the arguments --rows <int> --cols <int>\n'
+                  '   To set the maximum number of generations in the game use the argument --max_generations <int>\n')
+            exit(1)
+        elif i == "--rows":
+            sys_rows = int(sys.argv[j + 1])
+        elif i == "--cols":
+            sys_cols = int(sys.argv[j + 1])
+        elif i == "--max_generations":
+            max_gen = int(sys.argv[j + 1])
+        else:
+            print("\nНеверный ключ командной строки: ", i, "\n")
+            exit(1)
 
 life = GameOfLife((50, 50))
 ui = GUI(life)

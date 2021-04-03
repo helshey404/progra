@@ -142,7 +142,7 @@ class GameOfLife:
         arr = []
         for i in range(x - 1, x + 2):
             for j in range(y - 1, y + 2):
-                if self.cell_height - 1 >= 0 <= i and j >= 0 <= self.cell_width - 1:
+                if 0<=i<=self.cell_height-1 and 0<=j<=self.cell_width-1:
                     if x != i or y != j:
                         arr.append(self.grid[i][j])
 
@@ -167,3 +167,6 @@ class GameOfLife:
                 elif s == 3 and self.grid[i][j] == 0:
                     grid_copy[i][j] = 1
         return grid_copy
+
+life=GameOfLife(320,280,20)
+life.run()
